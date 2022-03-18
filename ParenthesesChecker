@@ -1,0 +1,17 @@
+function parenthesesChecker = x => {
+  let stack = [];
+
+  for (i=0; i<x.length; i++){
+    let curr = stack[stack.length-1]
+
+    if (x[i] == '(' || x[i] == '[' || x[i] == '{'){
+      stack.push(x);
+    } else if (
+      (curr = '(' && x[i] == ')') ||
+      (curr = '[' && x[i] == ']') ||
+      (curr = '{' && x[i] == '}')){
+        stack.pop();
+      } else return false;
+  }
+  return (stack.length == 0);
+}
